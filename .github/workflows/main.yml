@@ -1,0 +1,19 @@
+name: SyncToGitLab
+
+on:
+  - push
+  - delete
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    name: Git-Sync-ish
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - uses: soaibsafi/Git-Sync-ish@v0.0.1
+      with:
+        target-url: ${{ secrets.TARGET_URL }} # Url of the repo want to sync https://gitlab.soaib.me/root/git-sync-ish.git
+        target-username: ${{ secrets.TARGET_USERNAME }} # username of the target platform e.g., soaib
+        target-token: ${{ secrets.TARGET_TOKEN }}  # Generate access token and enble force push for protected branches
