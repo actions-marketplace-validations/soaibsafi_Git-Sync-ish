@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
-    - uses: soaibsafi/Git-Sync-ish@v0.0.1
+    - uses: soaibsafi/Git-Sync-ish@v0.0.2
       with:
         target-url: ${{ secrets.TARGET_URL }} # Url of the repo want to sync https://gitlab.soaib.me/root/git-sync-ish.git
         target-username: ${{ secrets.TARGET_USERNAME }} # username of the target platform e.g., soaib
