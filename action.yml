@@ -1,0 +1,27 @@
+name: 'Git Sync-ish'
+description: 'Git Sync-ish enables to synchronize changes to other git platforms, e.g., GitLab, Gitee, etc.'
+
+branding:
+  icon: refresh-cw
+  color: blue
+
+inputs:
+  target-url:
+    description: 'URL (target repo)'
+    required: true
+  target-username:
+    description: 'Username (target repo)'
+    required: true
+  target-token:
+    description: 'Access Token generated on the target platform'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/entry.sh
+      shell: bash
+      env:
+        INPUT_TARGET_URL: ${{ inputs.target-url }}
+        INPUT_TARGET_USERNAME: ${{ inputs.target-username }}
+        INPUT_TARGET_TOKEN: ${{ inputs.target-token }}
+        GITHUB_EVENT_REF: ${{ github.event.ref }}
